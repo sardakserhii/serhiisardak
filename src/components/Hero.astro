@@ -1,0 +1,99 @@
+---
+// import bg from "assets/bg/linieBgSvgsvg.svg"; // проверь точное имя файла
+const skills = [
+  "Astro",
+  "React",
+  "Vue",
+  "Svelte",
+  "Tailwind CSS",
+  "JavaScript",
+  "TypeScript",
+];
+
+const COLOR_CLASSES = [
+  "bg-rose-600",
+  "bg-pink-600",
+  "bg-fuchsia-600",
+  "bg-purple-600",
+  "bg-violet-600",
+  "bg-indigo-600",
+  "bg-blue-600",
+  "bg-sky-600",
+  "bg-cyan-600",
+  "bg-teal-600",
+  "bg-emerald-600",
+  "bg-green-600",
+  "bg-lime-600",
+  "bg-yellow-600",
+  "bg-amber-600",
+  "bg-orange-600",
+  "bg-red-600",
+];
+
+// стабильный выбор на основе текста (не будет "мигать" между рендерами)
+const pickColorByHash = (str: string) => {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
+  const idx = Math.abs(h) % COLOR_CLASSES.length;
+  return COLOR_CLASSES[idx];
+};
+---
+
+<section class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden">
+  <img
+    src="/src/assets/bg/linieBgSvgsvg.svg"
+    alt=""
+    class="hidden fixed inset-0 w-full h-full object-cover pointer-events-none lg:block"
+  />
+  <div
+    class="flex flex-col items-center justify-center gap-y-10 min-h-screen max-w-4/7 px-4 text-center text-white"
+  >
+    <img
+      src="/src/assets/img/Avatar.png"
+      alt="Avatar Logo"
+      class="w-24 h-24 mb-6"
+    />
+    <p class="text-lg max-w-2xl mb-8">
+      Ich erstelle moderne One-Page-Websites für kleine Unternehmen. Ihr
+      neuer Landing Page wird mit Astro und Tailwind CSS entwickelt – das
+      garantiert blitzschnelle Ladezeiten und ein ansprechendes, responsives
+      Design. Ich integriere SEO-Best Practices und kann Texte per KI (ChatGPT)
+      optimieren. In nur 7 Tagen ist Ihre Website startklar, inkl.
+      Domain-Einrichtung und SSL. Kontaktieren Sie mich gern auf Deutsch oder
+      Englisch, um Details zu besprechen!
+    </p>
+    <h1 class="text-5xl font-bold mb-4 text-gray-200">
+      Hello World! Mein name ist <p class="inline text-red">Serhii Sardak</p>. Ich bin Web-Developer
+    </h1>
+
+    <a
+      href="https://astro.build"
+      class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold transition"
+    >
+      Get Started
+    </a>
+    <div class="flex justify-center space-x-4 pb-10 pt-35 flex-wrap gap-5">
+      <!-- {
+        skills.map((skill) => (
+          <span class="px-3 py-1 bg-gray-800 rounded-full text-sm text-white">
+            {skill}
+          </span>
+        ))
+      } -->
+
+      {
+        skills.map((skill) => {
+          const bg = pickColorByHash(skill); // или pickRandomColor()
+          return (
+            <span
+              key={skill}
+              className={`px-3 py-1 rounded-full text-sm text-white ${bg}`}
+            >
+              {skill}
+            </span>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
