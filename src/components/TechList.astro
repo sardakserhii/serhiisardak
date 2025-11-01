@@ -1,0 +1,7 @@
+---
+import TechBadge from "./TechBadge.astro";
+const { items = [], size = "sm" } = Astro.props;
+---
+<div class="flex flex-wrap gap-4">
+  { items.map((t) => <TechBadge tech={t} size={size} />) }
+</div>

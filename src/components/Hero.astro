@@ -1,4 +1,6 @@
 ---
+import TechList from "./TechList.astro";
+
 // import bg from "assets/bg/linieBgSvgsvg.svg"; // проверь точное имя файла
 const skills = [
   "Astro",
@@ -39,41 +41,35 @@ const pickColorByHash = (str: string) => {
 };
 ---
 
-<section class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden">
-  <!-- <img
-    src="/src/assets/bg/linieBgSvgsvg.svg"
-    alt=""
-    class="hidden fixed inset-0 w-full h-full object-cover pointer-events-none lg:block"
-  /> -->
-  <img src="/src/assets/bg/bg-lines-symmetric.svg" class="fixed inset-0 w-screen h-screen object-cover object-center pointer-events-none mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80%" alt="" />
+<section
+  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%]"
+  id="hero"
+>
+  <!-- <img src="/src/assets/bg/bg-lines-symmetric.svg" class="fixed inset-0 w-screen h-screen object-cover object-center pointer-events-none mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80%" alt="" /> -->
 
   <div
-    class="flex flex-col items-center justify-center gap-y-10 min-h-screen max-w-4/7 px-4 text-center text-white"
+    class="flex flex-col items-center justify-center gap-y-15 min-h-screen max-w-4/7 px-4 text-center text-white"
   >
     <img
       src="/src/assets/img/profileImg.webp"
       alt="Avatar Logo"
-      class="w-36 h-36 mb-6 rounded-full object-cover border-4 border-white "
+      class="w-36 h-36 mb-6 rounded-full object-cover border-4 border-white"
     />
-    <p class="text-lg max-w-2xl mb-8">
-      Ich erstelle moderne One-Page-Websites für kleine Unternehmen. Ihr
-      neuer Landing Page wird mit Astro und Tailwind CSS entwickelt – das
-      garantiert blitzschnelle Ladezeiten und ein ansprechendes, responsives
-      Design. Ich integriere SEO-Best Practices und kann Texte per KI (ChatGPT)
-      optimieren. In nur 7 Tagen ist Ihre Website startklar, inkl.
-      Domain-Einrichtung und SSL. Kontaktieren Sie mich gern auf Deutsch oder
-      Englisch, um Details zu besprechen!
+    <p class="max-w-2xl mb-8 text-xl">
+      Ich erstelle moderne One-Page-Websites für kleine Unternehmen. Ihr neuer
+      Landing Page wird mit Astro und Tailwind CSS entwickelt – das garantiert
+      blitzschnelle Ladezeiten und ein ansprechendes, responsives Design. Ich
+      integriere SEO-Best Practices und kann Texte per KI (ChatGPT) optimieren.
+      In nur 7 Tagen ist Ihre Website startklar, inkl. Domain-Einrichtung und
+      SSL. Kontaktieren Sie mich gern auf Deutsch oder Englisch, um Details zu
+      besprechen!
     </p>
     <h1 class="text-5xl font-bold mb-4 text-gray-200">
-      Hello World! Mein name ist <p class="inline text-red">Serhii Sardak</p>. Ich bin Web-Developer
+      Hello World! Mein name ist <p class="inline text-[#E3646E]">
+        Serhii Sardak
+      </p>. Ich bin Web-Developer
     </h1>
 
-    <a
-      href="https://astro.build"
-      class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold transition"
-    >
-      Get Started
-    </a>
     <div class="flex justify-center space-x-4 pb-10 pt-35 flex-wrap gap-5">
       <!-- {
         skills.map((skill) => (
@@ -83,19 +79,7 @@ const pickColorByHash = (str: string) => {
         ))
       } -->
 
-      {
-        skills.map((skill) => {
-          const bg = pickColorByHash(skill); // или pickRandomColor()
-          return (
-            <span
-              key={skill}
-              className={`px-3 py-1 rounded-full text-sm text-white ${bg}`}
-            >
-              {skill}
-            </span>
-          );
-        })
-      }
+      <TechList items={["github", "php", "css", "html", "javascript", "astro", "tailwind"]} />
     </div>
   </div>
 </section>

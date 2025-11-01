@@ -1,0 +1,14 @@
+---
+import { TECH, DEFAULT_BADGE } from "../lib/tech.js";
+
+const { tech, size = "sm", variant = "soft" } = Astro.props;
+const meta = TECH[tech];
+const base = "inline-flex items-center rounded-full ring-1 px-2 font-medium whitespace-nowrap";
+const sizeCls = size === "md" ? "h-7 text-[13px] px-2.5" : "h-6 text-[12px]";
+const soft = meta ? meta.classes : DEFAULT_BADGE;
+// «Плотный» вариант — просто делаем фон менее прозрачным и текст белым
+const solid = meta ? `${meta.classes.replace("/15","/40")} text-white` : DEFAULT_BADGE;
+const final = `${base} ${sizeCls} ${variant === "solid" ? solid : soft}`;
+const label = meta ? meta.label : String(tech);
+---
+<span class={final}>{label}</span>
