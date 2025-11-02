@@ -1,2 +1,23 @@
 @import "tailwindcss";
 
+@layer base {
+  html {
+    /* Base line-height (Tailwind leading-normal) */
+    line-height: 1.5;
+  }
+
+  /* Tighter tracking for headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    /* Tailwind tracking-tight */
+    letter-spacing: -0.025em;
+  }
+
+  /* Ensure small text is at least 14px when using <small> */
+  small {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px (optional for readability) */
+  }
+}
