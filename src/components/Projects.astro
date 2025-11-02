@@ -1,86 +1,96 @@
 ---
 import TechList from "./TechList.astro";
 
-
 const projects = [
   {
-    title: "Projekt 1",
-    description: "One-Page Website for a small business",
-    image: "/projects/project1.png",
-    tech:["react", "astro", "tailwind"]
+    title: "KFZ-Service • Meisterbetrieb",
+    description:
+      "Landingpage für einen KFZ-Meisterbetrieb: Inspektion, Service & Reparatur für alle Marken, digitale Transparenz, HU/AU, E-Autos. Schnelle Terminbuchung, Werkstattersatzwagen & Expressservice.",
+    image: "/projects/meisterbetrieb.png",
+    tech: ["react", "astro", "tailwind"],
   },
   {
-    title: "Projekt 2",
-    description: "One-Page Website for a small business",
-    image: "/projects/project2.png",
-    tech:["react", "astro", "tailwind"]
-
+    title: "Renovierung & Innenausbau — helles Layout",
+    description:
+      "Startseite für Renovierungsbetrieb mit klarer Typo, ‚Kostenlose Anfrage‘-CTA, Über-uns-Block, Galerie und Leistungsübersicht. Vertrauensfaktoren: 15+ Jahre, 500+ Projekte, 98% Zufriedenheit.",
+    image: "/projects/renov.png",
+    tech: ["react", "astro", "tailwind"],
   },
   {
-    title: "Projekt 3",
-    description: "One-Page Website for a small business",
-    image: "/projects/project3.png",
-    tech:["react", "astro", "tailwind"]
-
+    title: "Renovierung & Innenausbau — dunkles Layout",
+    description:
+      "Hero mit Vorher/Nachher-Slider, Projects-Preview, sekundärem CTA ‚Projekte ansehen‘ und Top-Navigation (Startseite, Leistungen, Projekte, Kalkulator, Kontakt). Fokus auf Lead-Erfassung.",
+    image: "/projects/renov2.png",
+    tech: ["react", "astro", "tailwind"],
   },
   {
-    title: "Projekt 4",
-    description: "One-Page Website for a small business",
-    image: "/projects/project4.png",
-    tech:["react", "astro", "tailwind"]
-
+    title: "Tierpflege & Grooming",
+    description:
+      "Emotionale Service-Seite mit warmen Verläufen, sanftem Grooming-Wording, Online-Buchung in 3 Schritten und Vorteilen (ärztliche Kontrolle, Premium-Kosmetik, Karten­zahlung).",
+    image: "/projects/tierpflege.png",
+    tech: ["react", "astro", "tailwind", "docker"],
   },
   {
-    title: "Projekt 5",
-    description: "One-Page Website for a small business",
-    image: "/projects/project5.png",
-    tech:["react", "astro", "tailwind", "docker"]
-
+    title: "Smart Garden 2025 • SaaS Dashboard",
+    description:
+      "Produkt-Landing für IoT-Gartenlösung: Metriken (Water Used, Watering Time, Active Zones), Charts zu Water Usage, CTA ‚Jetzt starten‘ / ‚Demo‘, Nutzenargumente (bis zu 30% weniger Wasser, 98% Empfehlung).",
+    image: "/projects/garten.png",
+    tech: ["react", "astro", "tailwind"],
   },
   {
-    title: "Projekt 6",
-    description: "One-Page Website for a small business",
+    title: "One-Page Template • Business",
+    description:
+      "Kompakter One-Pager mit Hero-CTA, Leistungs-Kacheln, Preiskarten, FAQ und Kontaktformular. Optimiert für schnelle Ladezeiten & Conversion.",
     image: "/projects/project6.png",
-    tech:["react"]
-
+    tech: ["react"],
   },
 ];
 ---
 
-<section id="projects" class="bg-[#16181D] flex flex-col mx-auto max-w-7xl px-4 py-16 justify-evenly min-h-screen">
-    <!-- Header -->
-    <header class="text-center mb-10">
-      <p class="text-[#E3646E] font-medium text-xl">Meine Projekte</p>
-      <h2 class="font-bold text-2xl">Sehen Sie sich die vorgestellten Projekte an</h2>
-    </header>
+<section
+  id="projects"
+  class="bg-[#16181D] flex flex-col mx-auto max-w-7xl px-4 py-16 justify-evenly min-h-screen"
+>
+  <!-- Header -->
+  <header class="text-center mb-10">
+    <p class="text-[#E3646E] font-medium text-xl">Meine Projekte</p>
+    <h2 class="font-bold text-2xl">
+      Sehen Sie sich die vorgestellten Projekte an
+    </h2>
+  </header>
 
-    <!-- Сетка 1×2 c равными карточками -->
+  <!-- Сетка 1×2 c равными карточками -->
 
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      projects.map((p) => (
+        <article
+          class="grid gap-6 md:grid-cols-[250px_1fr]
+         items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5
+         min-h-[220px] hover:-translate-y-0.5 transition"
+        >
+          {/* превью */}
+          <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
+            <img
+              class="w-full h-full object-cover"
+              src={p.image}
+              alt={p.title}
+              title={p.title}
+            />
+          </div>
 
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-  {projects.map((p) => (
-    <article
-      class="grid gap-6 md:grid-cols-[250px_1fr]
-             items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5
-             min-h-[220px] hover:-translate-y-0.5 transition"
-    >
-      {/* превью */}
-      <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
-        <img class="w-full h-full object-cover" src={p.image} alt="" />
-      </div>
-
-      {/* контент */}
-      <div class="flex flex-col h-full shrink min-w-[130px]">
-        <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
-        <p class="text-sm text-white/80 mb-4">
-          {p.description}
-        </p>
-        <div class="mt-auto">
-          <TechList items={p.tech} />
-        </div>
-      </div>
-    </article>
-  ))}
-</div>
+          {/* контент */}
+          <div class="flex flex-col h-full shrink min-w-[130px]">
+            <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
+            <p class="text-sm text-white/80 mb-4">
+              {p.description.split(".").slice(0, 2).join(". ")}
+            </p>
+            <div class="mt-auto flex space-x-2">
+              <TechList items={p.tech} />
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
 </section>

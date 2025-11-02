@@ -11,79 +11,64 @@ const skills = [
   "JavaScript",
   "TypeScript",
 ];
-
-const COLOR_CLASSES = [
-  "bg-rose-600",
-  "bg-pink-600",
-  "bg-fuchsia-600",
-  "bg-purple-600",
-  "bg-violet-600",
-  "bg-indigo-600",
-  "bg-blue-600",
-  "bg-sky-600",
-  "bg-cyan-600",
-  "bg-teal-600",
-  "bg-emerald-600",
-  "bg-green-600",
-  "bg-lime-600",
-  "bg-yellow-600",
-  "bg-amber-600",
-  "bg-orange-600",
-  "bg-red-600",
-];
-
-// стабильный выбор на основе текста (не будет "мигать" между рендерами)
-const pickColorByHash = (str: string) => {
-  let h = 0;
-  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
-  const idx = Math.abs(h) % COLOR_CLASSES.length;
-  return COLOR_CLASSES[idx];
-};
 ---
 
 <section
-  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%]"
+  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%] mask-b-from-60% mask-radial-[55%_90%] mask-radial-from-80%"
   id="hero"
 >
-
-
   <!-- <img src="/src/assets/bg/bg-lines-symmetric.svg" class="fixed inset-0 w-screen h-screen object-cover object-center pointer-events-none mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80%" alt="" /> -->
 
   <div
     class="flex flex-col items-center justify-center gap-y-15 min-h-screen max-w-4/7 px-4 text-center text-white"
   >
- 
+    <h1
+      class="font-bold mb-8 text-gray-200 text-3xl md:text-5xl tracking-tight"
+    >
+      Hello World! Mein name ist <span class="text-[#E3646E]">
+        Serhii Sardak
+      </span>. Ich bin Web-Developer
+    </h1>
+
     <img
       src="/img/profileImg.webp"
       alt="Avatar Logo"
-      class="w-36 h-36 mb-6 rounded-full object-cover border-4 border-white"
+      class="w-36 h-36 mb-8 rounded-full object-cover border-4 border-white"
     />
-   
-    <p class="max-w-2xl mb-8 text-xl">
-      Ich erstelle moderne One-Page-Websites für kleine Unternehmen. Ihr neuer
-      Landing Page wird mit Astro und Tailwind CSS entwickelt – das garantiert
-      blitzschnelle Ladezeiten und ein ansprechendes, responsives Design. Ich
-      integriere SEO-Best Practices und kann Texte per KI (ChatGPT) optimieren.
-      In nur 7 Tagen ist Ihre Website startklar, inkl. Domain-Einrichtung und
-      SSL. Kontaktieren Sie mich gern auf Deutsch oder Englisch, um Details zu
-      besprechen!
+
+    <p class="mb-8 text-xl prose prose-invert max-w-none md:max-w-[60ch]">
+      Professionelle Landing Page in einer Woche. Astro, Tailwind und SEO für
+      beste Performance. Texte optional mit ChatGPT verfeinert. Ich erstelle
+      moderne One-Page-Websites für kleine Unternehmen. Klare Struktur,
+      schnelles Laden, responsive Design. In 7 Tagen live – inkl.
+      Domain-Einrichtung und SSL.
     </p>
-    <h1 class="text-5xl font-bold mb-4 text-gray-200">
-      Hello World! Mein name ist <p class="inline text-[#E3646E]">
-        Serhii Sardak
-      </p>. Ich bin Web-Developer
-    </h1>
 
-    <div class="flex justify-center space-x-4 pb-10 pt-35 flex-wrap gap-5">
-      <!-- {
-        skills.map((skill) => (
-          <span class="px-3 py-1 bg-gray-800 rounded-full text-sm text-white">
-            {skill}
-          </span>
-        ))
-      } -->
+    <div class="flex items-center justify-center space-x-4 mb-8">
+      <a
+        href="#contact"
+        class="bg-[#E3646E] text-white py-2 px-4 rounded hover:bg-[#D2535E] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3646E]"
+        >Kostenlose Beratung buchen</a
+      >
+      <a
+        href="#portfolio"
+        class="bg-[#E3646E] text-white py-2 px-4 rounded hover:bg-[#D2535E] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3646E]"
+        >Projekte ansehen</a
+      >
+    </div>
 
-      <TechList items={["github", "css", "html", "javascript", "astro", "tailwind", "vercel"]} />
+    <div class="flex justify-center space-x-4 flex-wrap gap-5">
+      <TechList
+        items={[
+          "github",
+          "css",
+          "html",
+          "javascript",
+          "astro",
+          "tailwind",
+          "vercel",
+        ]}
+      />
     </div>
   </div>
 </section>
