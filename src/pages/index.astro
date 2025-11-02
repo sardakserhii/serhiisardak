@@ -4,25 +4,86 @@ import Hero from "../components/Hero.astro";
 import Logo from "../components/Logo.astro";
 import Projects from "../components/Projects.astro";
 import "../styles/global.css";
+
+const {
+  title = "Serhii Sardak – Web-Developer für schnelle One-Page-Websites",
+  description = "Moderne One-Page-Websites mit Astro & Tailwind. Klarer Aufbau, schnelle Ladezeiten, SEO-ready. In 7 Tagen live – inkl. Domain & SSL.",
+  url = "https://sardak.dev",
+  image = "https://sardak.dev/og/og-cover.jpg", // 1200×630
+  locale = "de_DE",
+} = Astro.props;
 ---
 
-<html class="h-full bg-[#16181D] [scrollbar-gutter:stable_both-edges]">
+<html
+  lang="de"
+  class="h-full bg-[#16181D] [scrollbar-gutter:stable_both-edges]"
+>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {/* Canonical */}
+    <link rel="canonical" href={url} />
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="sardak.dev" />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    {/* Theming & PWA bits */}
+    <meta name="theme-color" content="#16181D" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {/* Fonts perf (если CDN) */}
+    {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */}
+    {
+      /* <link rel="preload" as="font" href="/fonts/Inter-Variable.woff2" type="font/woff2" crossorigin> */
+    }
   </head>
   <body class="m-0 bg-[#16181D] text-white overflow-x-hidden">
     <div class="flex justify-center pt-6">
       <Logo />
     </div>
-		<main>
-  
-			<Hero />
-      <Projects/>
-      <Contacts/>
-		</main>
+    <main>
+      <Hero />
+      <Projects />
+      <Contacts />
+    </main>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Serhii Sardak",
+        "url": "https://sardak.dev",
+        "jobTitle": "Web-Developer",
+        "image": "https://sardak.dev/img/profile.webp",
+        "sameAs": [
+          "https://www.linkedin.com/in/serhiisardak/",
+          "https://github.com/sardakserhii"
+        ]
+      }
+    </script>
   </body>
 </html>

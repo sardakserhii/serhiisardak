@@ -14,27 +14,25 @@ const skills = [
 ---
 
 <section
-  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%] mask-b-from-60% mask-radial-[55%_90%] mask-radial-from-80%"
+  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%] mask-b-from-60% mask-radial-[55%_90%] mask-radial-from-80% opacity-80 md:opacity-90 py-16 md:py-24"
   id="hero"
 >
-  <!-- <img src="/src/assets/bg/bg-lines-symmetric.svg" class="fixed inset-0 w-screen h-screen object-cover object-center pointer-events-none mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80%" alt="" /> -->
-
   <div
-    class="flex flex-col items-center justify-center gap-y-15 min-h-screen max-w-4/7 px-4 text-center text-white"
+    class="flex flex-col items-center justify-center gap-y-8 min-h-screen max-w-4/7 px-4 mx-auto text-center text-white"
   >
-    <h1
-      class="font-bold mb-8 text-gray-200 text-3xl md:text-5xl tracking-tight"
-    >
-      Hello World! Mein name ist <span class="text-[#E3646E]">
-        Serhii Sardak
-      </span>. Ich bin Web-Developer
-    </h1>
-
     <img
       src="/img/profileImg.webp"
       alt="Avatar Logo"
-      class="w-36 h-36 mb-8 rounded-full object-cover border-4 border-white"
+      class="w-36 h-36 mb-4 rounded-full object-cover border-4 border-white"
     />
+
+    <h1
+      class="font-bold mb-8 text-gray-200 text-3xl md:text-5xl tracking-tight"
+    >
+      Hello World! Mein name ist <span class="text-[#E3646E]"
+        >Serhii Sardak.</span
+      > Ich bin Web-Developer
+    </h1>
 
     <p class="mb-8 text-xl prose prose-invert max-w-none md:max-w-[60ch]">
       Professionelle Landing Page in einer Woche. Astro, Tailwind und SEO für
@@ -52,9 +50,9 @@ const skills = [
       >
       <a
         href="#portfolio"
-        class="bg-[#E3646E] text-white py-2 px-4 rounded hover:bg-[#D2535E] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3646E]"
-        >Projekte ansehen</a
-      >
+        aria-label="Zum Portfolio springen – Projekte ansehen"
+        class="text-[#E3646E] border border-[#E3646E]/70 bg-transparent py-2 px-4 rounded hover:bg-[#E3646E]/10 transition focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E3646E]/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#16181D]"
+      >Projekte ansehen</a>
     </div>
 
     <div class="flex justify-center space-x-4 flex-wrap gap-5">
