@@ -1,96 +1,45 @@
 ---
+import { Image } from "astro:assets";
 import TechList from "./TechList.astro";
-
-const projects = [
-  {
-    title: "KFZ-Service • Meisterbetrieb",
-    description:
-      "Landingpage für einen KFZ-Meisterbetrieb: Inspektion, Service & Reparatur für alle Marken, digitale Transparenz, HU/AU, E-Autos. Schnelle Terminbuchung, Werkstattersatzwagen & Expressservice.",
-    image: "/projects/meisterbetrieb.png",
-    tech: ["react", "astro", "tailwind"],
-  },
-  {
-    title: "Renovierung & Innenausbau — helles Layout",
-    description:
-      "Startseite für Renovierungsbetrieb mit klarer Typo, ‚Kostenlose Anfrage‘-CTA, Über-uns-Block, Galerie und Leistungsübersicht. Vertrauensfaktoren: 15+ Jahre, 500+ Projekte, 98% Zufriedenheit.",
-    image: "/projects/renov.png",
-    tech: ["react", "astro", "tailwind"],
-  },
-  {
-    title: "Renovierung & Innenausbau — dunkles Layout",
-    description:
-      "Hero mit Vorher/Nachher-Slider, Projects-Preview, sekundärem CTA ‚Projekte ansehen‘ und Top-Navigation (Startseite, Leistungen, Projekte, Kalkulator, Kontakt). Fokus auf Lead-Erfassung.",
-    image: "/projects/renov2.png",
-    tech: ["react", "astro", "tailwind"],
-  },
-  {
-    title: "Tierpflege & Grooming",
-    description:
-      "Emotionale Service-Seite mit warmen Verläufen, sanftem Grooming-Wording, Online-Buchung in 3 Schritten und Vorteilen (ärztliche Kontrolle, Premium-Kosmetik, Karten­zahlung).",
-    image: "/projects/tierpflege.png",
-    tech: ["react", "astro", "tailwind", "docker"],
-  },
-  {
-    title: "Smart Garden 2025 • SaaS Dashboard",
-    description:
-      "Produkt-Landing für IoT-Gartenlösung: Metriken (Water Used, Watering Time, Active Zones), Charts zu Water Usage, CTA ‚Jetzt starten‘ / ‚Demo‘, Nutzenargumente (bis zu 30% weniger Wasser, 98% Empfehlung).",
-    image: "/projects/garten.png",
-    tech: ["react", "astro", "tailwind"],
-  },
-  {
-    title: "One-Page Template • Business",
-    description:
-      "Kompakter One-Pager mit Hero-CTA, Leistungs-Kacheln, Preiskarten, FAQ und Kontaktformular. Optimiert für schnelle Ladezeiten & Conversion.",
-    image: "/projects/project6.png",
-    tech: ["react"],
-  },
-];
+import projects from "../lib/project.js";
 ---
 
-<section
-  id="projects"
-  class="bg-[#16181D] flex flex-col mx-auto max-w-[1100px] px-4 py-16 md:py-24 justify-evenly min-h-screen"
->
-  <!-- Header -->
+<section id="projects" class="bg-[#16181D] mx-auto max-w-[1100px] px-4 py-16 md:py-24">
   <header class="text-center mb-8">
     <p class="text-[#E3646E] font-medium text-xl">Meine Projekte</p>
-    <h2 class="font-bold text-2xl tracking-tight">
-      Sehen Sie sich die vorgestellten Projekte an
-    </h2>
+    <h2 class="font-bold text-2xl tracking-tight">Sehen Sie sich die vorgestellten Projekte an</h2>
   </header>
 
-  <!-- Сетка 1×2 c равными карточками -->
-
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {
-      projects.map((p) => (
-        <article
-          class="grid gap-6 md:grid-cols-[250px_1fr]
-         items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5
-         min-h-[220px] hover:-translate-y-0.5 transition"
-        >
-          {/* превью */}
-          <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
-            <img
-              class="w-full h-full object-cover"
-              src={p.image}
-              alt={p.title}
-              title={p.title}
-            />
-          </div>
+    {projects.map((p) => (
+      <article class="grid gap-6 md:grid-cols-[250px_1fr] items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5 min-h-[220px] hover:-translate-y-0.5 transition">
+        <!-- превью -->
+        <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
+          <Image
+            src={p.image}
+            alt={p.title}
+            widths={[320, 480, 640, 768, 896, 1024]}     /* генерим нужные рёбра */
+            formats={["avif", "webp"]}                   /* современные форматы */
+            quality={70}
+            sizes="(min-width: 768px) 250px, 92vw"       /* 250px в твоей 2-колонке */
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            placeholder="blur"
+          />
+        </div>
 
-          {/* контент */}
-          <div class="flex flex-col h-full shrink min-w-[130px]">
-            <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
-            <p class="text-sm text-white/70 mb-4">
-              {p.description.split(".").slice(0, 2).join(". ")}
-            </p>
-            <div class="mt-auto flex space-x-2">
-              <TechList items={p.tech} />
-            </div>
+        <!-- контент -->
+        <div class="flex flex-col h-full min-w-[130px]">
+          <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
+          <p class="text-sm text-white/70 mb-4">
+            {p.description.split(".").slice(0, 2).join(". ")}
+          </p>
+          <div class="mt-auto flex space-x-2">
+            <TechList items={p.tech} />
           </div>
-        </article>
-      ))
-    }
+        </div>
+      </article>
+    ))}
   </div>
 </section>
