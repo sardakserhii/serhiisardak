@@ -5,108 +5,82 @@ import TechList from "./TechList.astro";
 const projects = [
   {
     title: "Projekt 1",
-    description: "lore ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-    image: "",
-    tech:["react"]
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project1.png",
+    tech:["react", "astro", "tailwind"]
   },
   {
     title: "Projekt 2",
-    description: "Beschreibung des Projekts 1.",
-    image: "",
-    tech:["react"]
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project2.png",
+    tech:["react", "astro", "tailwind"]
 
   },
   {
     title: "Projekt 3",
-    description: "Beschreibung des Projekts 1.",
-    image: "",
-    tech:["react"]
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project3.png",
+    tech:["react", "astro", "tailwind"]
 
   },
   {
     title: "Projekt 4",
-    description: "Beschreibung des Projekts 1.",
-    image: "",
-    tech:["react"]
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project4.png",
+    tech:["react", "astro", "tailwind"]
 
   },
   {
     title: "Projekt 5",
-    description: "Beschreibung des Projekts 1.",
-    image: "",
-    tech:["react"]
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project5.png",
+    tech:["react", "astro", "tailwind", "docker"]
 
   },
   {
     title: "Projekt 6",
-    description: "Beschreibung des Projekts 1.",
-    image: "",
+    description: "One-Page Website for a small business",
+    image: "/src/assets/projects/project6.png",
     tech:["react"]
 
   },
 ];
 ---
-<!-- old projects section -->
-<!-- <section
-  class="flex flex-col min-h-screen items-center justify-evenly px-4 bg-[#16181D]"
-  id="#projects"
->
-  <div class="gap-4 text-center mb-10">
-    <p class="text-[#E3646E] font-medium text-xl">Meine Projecten</p>
-    <p class="text-mono font-bold text-2xl">Sehen Sie sich die vorgestellten Projekte an</p>
-  </div>
 
-  <div class="flex flex-wrap justify-center gap-15 mt-10 max-w-4/7">
-    {
-      projects.map((project) => (
-        <div class="card flex flex-row items-center justify-between bg-[#292C34] p-4 rounded-lg shadow-lg max-w-[550px] min-w-[550px]">
-          <div class="bg-amber-500 rounded-xl min-w-70 min-h-50"  />
-          <div class="flex flex-col ml-4">
-            <p class="font-bold text-[16px]">{project.title}</p>
-            <p class="text-[14px] mb-4">{project.description}</p>
-            <span class="mt-2 text-[12px] font-bold text-gray-400">{project.tech}</span>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-</section> -->
-
-<section id="projects" class="bg-[#16181D]">
-  <div class="mx-auto max-w-7xl px-4 py-16">
+<section id="projects" class="bg-[#16181D] flex flex-col mx-auto max-w-7xl px-4 py-16 justify-evenly min-h-screen">
+    <!-- Header -->
     <header class="text-center mb-10">
       <p class="text-[#E3646E] font-medium text-xl">Meine Projekte</p>
       <h2 class="font-bold text-2xl">Sehen Sie sich die vorgestellten Projekte an</h2>
     </header>
 
     <!-- Сетка 1×2 c равными карточками -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {
-        projects.map((p) => (
-          <article
-            class="grid grid-cols-[200px_1fr] items-center gap-6
-                   rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5
-                   h-[220px] hover:-translate-y-0.5 transition"
-          >
-            <!-- Превью фиксированного размера -->
-            <div class="w-[200px] h-[160px] rounded-xl bg-amber-500 overflow-hidden">
-              {/* если будет картинка: <img class="w-full h-full object-cover" src={p.image} alt="" /> */}
-            </div>
 
-            <!-- Контент растягиваем по высоте, метки прижимаем вниз -->
-            <div class="flex flex-col h-full">
-              <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
-              <p class="text-sm text-white/80 mb-4">
-                {p.description}
-              </p>
-          
-                <div class="mt-4">
-                    <TechList items={p.tech} />
-                </div>   
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {projects.map((p) => (
+    <article
+      class="grid gap-6 md:grid-cols-[250px_1fr]
+             items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5
+             min-h-[220px] hover:-translate-y-0.5 transition"
+    >
+      {/* превью */}
+      <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
+        <img class="w-full h-full object-cover" src={p.image} alt="" />
+      </div>
+
+      {/* контент */}
+      <div class="flex flex-col h-full shrink min-w-[130px]">
+        <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
+        <p class="text-sm text-white/80 mb-4">
+          {p.description}
+        </p>
+        <div class="mt-auto">
+          <TechList items={p.tech} />
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
 </section>

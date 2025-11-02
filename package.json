@@ -1,5 +1,5 @@
 {
-  "name": "sardakserhii_portfolio",
+  "name": "serhii-sardak-website",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,5 +12,10 @@
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.3",
     "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.71",
+    "@iconify-json/simple-icons": "^1.2.56",
+    "astro-icon": "^1.1.5"
   }
 }
