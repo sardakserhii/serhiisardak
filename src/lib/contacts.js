@@ -11,7 +11,12 @@ export const CONTACTS = [
     value: "https://www.linkedin.com/in/sardakserhii/",
     icon: "simple-icons:linkedin",
   },
-  { type: "github", label: "GitHub", value: "https://github.com/sardakserhii" , icon: "simple-icons:github"},
+  {
+    type: "github",
+    label: "GitHub",
+    value: "https://github.com/sardakserhii",
+    icon: "simple-icons:github",
+  },
   // { type: "phone", label: "Telefon", value: "+49 151 23456789" , icon: "lucide:phone" },
 ];
 
