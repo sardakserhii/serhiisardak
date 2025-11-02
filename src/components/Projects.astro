@@ -12,16 +12,16 @@ import projects from "../lib/project.js";
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {projects.map((p) => (
-      <article class="grid gap-6 md:grid-cols-[250px_1fr] items-center rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5 min-h-[220px] hover:-translate-y-0.5 transition">
+      <article class="grid gap-6 md:grid-cols-[250px_1fr] items-start rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5 min-h-[220px] hover:-translate-y-0.5 transition overflow-hidden">
         <!-- превью -->
-        <div class="w-full md:w-[250px] h-[200px] rounded-xl overflow-hidden">
+        <div class="w-full md:w-[250px] aspect-[4/3] h-[200px] rounded-xl overflow-hidden">
           <Image
             src={p.image}
             alt={p.title}
-            widths={[320, 480, 640, 768, 896, 1024]}     /* генерим нужные рёбра */
-            formats={["avif", "webp"]}                   /* современные форматы */
+            widths={[320, 480, 640, 768, 896, 1024]}
+            formats={["avif", "webp"]}
             quality={70}
-            sizes="(min-width: 768px) 250px, 92vw"       /* 250px в твоей 2-колонке */
+            sizes="(min-width: 768px) 250px, 92vw"
             class="w-full h-full object-cover"
             loading="lazy"
             decoding="async"
@@ -30,12 +30,12 @@ import projects from "../lib/project.js";
         </div>
 
         <!-- контент -->
-        <div class="flex flex-col h-full min-w-[130px]">
-          <h3 class="font-semibold text-[16px] mb-1">{p.title}</h3>
-          <p class="text-sm text-white/70 mb-4">
+        <div class="flex flex-col h-full min-w-0 w-full">
+          <h3 class="font-semibold text-[16px] mb-1 break-words whitespace-normal">{p.title}</h3>
+          <p class="text-sm text-white/70 mb-4 break-words whitespace-normal">
             {p.description.split(".").slice(0, 2).join(". ")}
           </p>
-          <div class="mt-auto flex space-x-2">
+          <div class="mt-auto flex flex-wrap gap-2">
             <TechList items={p.tech} />
           </div>
         </div>

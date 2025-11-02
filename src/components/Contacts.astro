@@ -19,7 +19,80 @@ import { Icon } from "astro-icon/components";
     </div>
   </div>
 
-  <!-- Compact Contact Card -->
+  <div
+    class="w-full max-w-md mx-auto px-4 bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700"
+  >
+    <div class="flex items-center gap-4 mb-6">
+      <div
+        class="w-14 h-14 rounded-full bg-[#BB72E9]/20 text-[#BB72E9] flex items-center justify-center font-semibold"
+      >
+        SS
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-gray-100">Serhii Sardak</h3>
+        <p class="text-white/70 text-sm">Kontaktinformationen</p>
+      </div>
+    </div>
+
+    <nav class="space-y-3">
+      <a
+        href="mailto:sardakserhii@gmail.com?subject=Projektanfrage%20Website"
+        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-colors"
+        rel="noopener"
+      >
+        <Icon name="lucide:mail" class="w-5 h-5 text-[#BB72E9]" />
+        <div class="leading-tight">
+          <div class="text-sm text-white/70">Email</div>
+          <div class="text-gray-100">sardakserhii@gmail.com</div>
+        </div>
+      </a>
+      <a
+        href="https://de.fiverr.com/s/xX2P6El"
+        target="_blank"
+        rel="me noopener noreferrer"
+        class="flex items-center gap-3
+      px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-colors"
+      >
+        <!-- <Icon name="/public/fiverr-icon.png" class="w-5 h-5 text-[#BB72E9]" /> -->
+        <img
+          src="/public/fiverr-icon.png"
+          alt="Fiverr"
+          class="w-5 h-5 text-[#BB72E9]"
+        />
+        <div class="leading-tight">
+          <div class="text-sm text-white/70">Fiverr</div>
+          <div class="text-gray-100">de.fiverr.com/sardakserhii</div>
+        </div>
+        <a
+          href="https://github.com/sardakserhii"
+          target="_blank"
+          rel="me noopener noreferrer"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-colors"
+        >
+          <Icon name="lucide:github" class="w-5 h-5 text-[#BB72E9]" />
+          <div class="leading-tight">
+            <div class="text-sm text-white/70">GitHub</div>
+            <div class="text-gray-100">github.com/sardakserhii</div>
+          </div>
+        </a>
+
+        <a
+          href="https://linkedin.com/in/sardakserhii"
+          target="_blank"
+          rel="me noopener noreferrer"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-colors"
+        >
+          <Icon name="lucide:linkedin" class="w-5 h-5 text-[#BB72E9]" />
+          <div class="leading-tight">
+            <div class="text-sm text-white/70">LinkedIn</div>
+            <div class="text-gray-100">linkedin.com/in/sardakserhii</div>
+          </div>
+        </a>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Compact Contact Card 
   <div
     class="w-full max-w-md mx-auto px-4 bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700"
   >
@@ -52,14 +125,14 @@ import { Icon } from "astro-icon/components";
       </a>
     </div>
 
-    <!-- Contact Form -->
+  
     <form
       id="contact-form"
       action="/api/contact"
       method="post"
       class="space-y-4"
     >
-      <!-- Honeypot (скрыто для людей) -->
+ 
       <input
         type="text"
         name="company"
@@ -120,33 +193,35 @@ import { Icon } from "astro-icon/components";
     </form>
   </div>
 
+  -->
   <div class="w-full max-w-[900px] mx-auto px-4 text-center">
     <p class="text-white/70 text-sm">
       Ich bin offen für neue Projekte und freue mich auf Ihre Nachricht.
     </p>
   </div>
-</section>
-<script is:inline>
-  const form = document.getElementById("contact-form");
-  const statusEl = document.getElementById("form-status");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Sende…";
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-      });
-      if (res.ok) {
-        statusEl.textContent = "Danke! Nachricht wurde gesendet.";
-        form.reset();
-      } else {
-        statusEl.textContent =
-          "Fehler beim Senden. Bitte später erneut versuchen.";
+  <script is:inline>
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Sende…";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          statusEl.textContent = "Danke! Nachricht wurde gesendet.";
+          form.reset();
+        } else {
+          statusEl.textContent =
+            "Fehler beim Senden. Bitte später erneut versuchen.";
+        }
+      } catch {
+        statusEl.textContent = "Netzwerkfehler. Bitte später erneut versuchen.";
       }
-    } catch {
-      statusEl.textContent = "Netzwerkfehler. Bitte später erneut versuchen.";
-    }
-  });
-</script>
+    });
+  </script>
+</section>
