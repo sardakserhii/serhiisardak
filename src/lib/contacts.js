@@ -2,17 +2,17 @@ export const CONTACTS = [
   {
     type: "email",
     label: "E-mail",
-    value: "hello@example.com",
+    value: "sardakserhii@gmail.com",
     icon: "lucide:mail",
   },
   {
     type: "linkedin",
     label: "LinkedIn",
-    value: "https://www.linkedin.com/in/yourprofile",
+    value: "https://www.linkedin.com/in/sardakserhii/",
     icon: "simple-icons:linkedin",
   },
-  { type: "github", label: "GitHub", value: "https://github.com/yourprofile" , icon: "simple-icons:github"},
-  { type: "phone", label: "Telefon", value: "+49 151 23456789" , icon: "lucide:phone" },
+  { type: "github", label: "GitHub", value: "https://github.com/sardakserhii" , icon: "simple-icons:github"},
+  // { type: "phone", label: "Telefon", value: "+49 151 23456789" , icon: "lucide:phone" },
 ];
 
 export const toHref = ({ type, value }) =>
