@@ -1,43 +1,197 @@
-# Astro Starter Kit: Minimal
+# Serhii Sardak — Portfolio (Astro 5 + Tailwind v4)
 
-```sh
-npm create astro@latest -- --template minimal
+Быстрый минималистичный сайт‑портфолио: тёмная тема, акцентные градиенты, удобный просмотр проектов и юридические страницы для Германии.
+
+> Домен: **https://sardak.dev** (деплой на Vercel)  
+> Репозиторий: **sardakserhii/serhiisardak**
+
+---
+
+## ✨ Функции
+
+- ⚡ **Высокая скорость**: Astro 5, минимальный рантайм‑JS, Tailwind v4.
+- 🧭 **Структурные секции**: Hero → Projects → Contacts.
+- 🖼️ **Увеличение изображений**: компонент `Lightbox.astro` на нативном `<dialog>`.
+- 🧩 **Единый стиль технологий**: `TechBadge.astro` + `TechList.astro` для меток стеков.
+- 🧷 **Иконки локально**: `astro-icon` с коллекциями **simple-icons** и **lucide**.
+- 🔍 **Sitemap + SEO‑база**: `@astrojs/sitemap`, корректный `site` в `astro.config.mjs`.
+- 🧾 **Юридические страницы (DE)**: `/impressum` и `/datenschutz`.
+- ✉️ **Контактная форма (API)**: `/api/contact` (через Resend) — _см. важное примечание ниже_.
+
+---
+
+## 🧰 Технологии
+
+- **Astro** `^5.15.3`
+- **Tailwind CSS** `^4.1.16` (плагин `@tailwindcss/vite`)
+- **astro-icon** `^1.1.5` + икон‑пакеты:
+  - `@iconify-json/simple-icons`
+  - `@iconify-json/lucide`
+- **@astrojs/sitemap** `^3.6.0`
+- **@astrojs/vercel** `^8.0.4` (адаптер для server/hybrid; пока закомментирован)
+- **resend** `^6.4.0` (для отправки писем из API‑роута)
+
+---
+
+## 🗂 Структура проекта
+
+```
+.
+├─ public/                  # статические файлы (отдаются как есть)
+├─ src/
+│  ├─ assets/               # импортируемые ассеты (собираются Vite/Astro)
+│  ├─ components/
+│  │  ├─ Contacts.astro
+│  │  ├─ Hero.astro
+│  │  ├─ Lightbox.astro
+│  │  ├─ Logo.astro
+│  │  ├─ Projects.astro
+│  │  ├─ TechBadge.astro
+│  │  └─ TechList.astro
+│  └─ pages/
+│     ├─ api/contact.js     # API‑роут для отправки писем (Resend)
+│     ├─ datenschutz.astro
+│     ├─ impressum.astro
+│     └─ index.astro
+├─ astro.config.mjs
+├─ tailwind.config          # (Tailwind v4 работает без отдельного файла, если не нужен кастом)
+├─ package.json
+└─ README.md
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🔗 Маршруты
 
-Inside of your Astro project, you'll see the following folders and files:
+- `/` — главная (Hero, проекты, контакты).
+- `/impressum` — Impressum.
+- `/datenschutz` — Datenschutzerklärung.
+- `/api/contact` — серверный эндпойнт для формы контактов (Resend).
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+> **Важно:** сейчас в `astro.config.mjs` установлен `output: "static"`.  
+> При таком режиме **серверные маршруты (`/api/*`) недоступны** на проде.  
+> Чтобы контактная форма работала, переключите проект на **`output: "hybrid"`** или **`"server"`** и **подключите адаптер Vercel**:
+>
+> ```js
+> // astro.config.mjs
+> import vercel from "@astrojs/vercel";
+> export default defineConfig({
+>   output: "hybrid",
+>   adapter: vercel(),
+>   // ...
+> });
+> ```
+>
+> На Vercel это создаст serverless‑функцию для `/api/contact`.
+
+---
+
+## ⚙️ Скрипты npm
+
+```json
+{
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  }
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚀 Запуск и сборка
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+# Установка зависимостей
+npm i
 
-## 🧞 Commands
+# Локальная разработка
+npm run dev  # http://localhost:4321
 
-All commands are run from the root of the project, from a terminal:
+# Продакшн‑сборка
+npm run build
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Предпросмотр сборки
+npm run preview
+```
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📨 Контактная форма (Resend)
+
+Файл: `src/pages/api/contact.js` (использует пакет `resend`).  
+Настройка окружения (Vercel → Project → Settings → Environment Variables):
+
+- `RESEND_API_KEY` — API‑ключ Resend
+- `MAIL_TO` — ваш email для получения
+- (опционально) `MAIL_FROM` — отправитель, например `portfolio@sardak.dev`
+
+Пример тела запроса (если есть клиентский fetch):
+
+```json
+{
+  "name": "Имя",
+  "email": "user@example.com",
+  "message": "Текст сообщения"
+}
+```
+
+> Если вы оставляете `output: "static"`, удалите/скройте форму или отправляйте на внешний сервис — иначе запросы упадут 404 на продакшне.
+
+---
+
+## 🖼 Lightbox (увеличение изображений)
+
+Компонент `src/components/Lightbox.astro` подключается глобально (в макете или на странице) и ловит клики по элементам с `data-lightbox`.  
+Пример в карточке проекта:
+
+```astro
+<img
+  src={imgSrc} alt={title}
+  class="w-full h-full object-cover cursor-zoom-in"
+  data-lightbox data-full={fullImgSrc ?? imgSrc}
+/>
+```
+
+Возможности:
+
+- Открытие по клику; закрытие по фону/«×»/`Escape`.
+- Блокировка прокрутки фона на время просмотра.
+
+---
+
+## 🔍 SEO и Sitemap
+
+- В `astro.config.mjs` задан `site: "https://sardak.dev"` — это обязательно для корректного `sitemap.xml`.
+- Плагины: `@astrojs/sitemap` (генерирует `sitemap.xml` при сборке).
+- Рекомендуется добавить OG‑изображение (`public/og.png`) и мета‑теги в главном макете/странице.
+
+---
+
+## 🧾 Юридические страницы
+
+Страницы находятся в `src/pages/impressum.astro` и `src/pages/datenschutz.astro`.  
+При добавлении аналитики, внешних шрифтов или форм — расширьте соответствующие разделы Datenschutz‑страницы.
+
+---
+
+## 📌 Roadmap
+
+- [ ] Включить **hybrid/server + @astrojs/vercel** для рабочей контактной формы.
+- [ ] Добавить коллекцию контента (Astro Content Collections) для проектов (Markdown‑файлы).
+- [ ] Скрипт импорта проектов из CSV/Google Sheets (по желанию).
+- [ ] Авто‑OG картинки для проектов.
+- [ ] i18n (RU/DE/EN).
+- [ ] Lighthouse‑тюнинг (preload шрифтов, theme‑color, favicons).
+
+---
+
+## 📄 Лицензия / Автор
+
+MIT (можно поменять под ваши нужды).
+
+**Автор:** Serhii Sardak — Freelance Web Developer (Germany)  
+**Email:** sardakserhii@gmail.com  
+**Сайт:** https://sardak.dev

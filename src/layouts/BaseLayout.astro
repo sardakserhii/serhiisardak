@@ -2,6 +2,8 @@
 import "../styles/global.css"; // глобальные стили один раз
 import Logo from "../components/Logo.astro";
 import Lightbox from "../components/Lightbox.astro";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 // Если хочешь, перенеси сюда Header/Footer позже
 
 // Пропсы для SEO и темизации
@@ -82,5 +84,7 @@ const {
     {/* Скрипты страницы (если нужны) */}
     <slot name="after" />
     <Lightbox />
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>
