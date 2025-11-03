@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless"; // если деплоишь на Vercel
+import vercel from "@astrojs/vercel"; // если деплоишь на Vercel
 
 // Если хочешь максимально совместимо с Node: используем assert для JSON.
 const simpleIcons = (
@@ -17,8 +17,8 @@ const lucide = (
 ).default;
 
 export default defineConfig({
-  output: "server", // или 'hybrid'
-  adapter: vercel(),
+  output: "static", // или 'hybrid' 'server' then нужно раскомментировать adapter
+  // adapter: vercel(),
   site: "https://sardak.dev",
   integrations: [
     icon({
