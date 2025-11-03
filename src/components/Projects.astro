@@ -1,10 +1,11 @@
 ---
+// src/components/projects.astro (фрагмент)
 import { Image } from "astro:assets";
 import TechList from "./TechList.astro";
 import projects from "../lib/project.js";
 ---
 
-<section id="projects" class="bg-[#16181D] mx-auto max-w-[1100px] px-4 py-16 md:py-24">
+<section id="projects" class="bg-[#16181D] mx-auto max-w-[1100px] px-4 py-16 md:py-24 scroll-mt-[var(--header-h)]">
   <header class="text-center mb-8">
     <p class="text-[#E3646E] font-medium text-xl">Meine Projekte</p>
     <h2 class="font-bold text-2xl tracking-tight">Sehen Sie sich die vorgestellten Projekte an</h2>
@@ -22,10 +23,14 @@ import projects from "../lib/project.js";
             formats={["avif", "webp"]}
             quality={70}
             sizes="(min-width: 768px) 250px, 92vw"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover cursor-zoom-in"
             loading="lazy"
             decoding="async"
             placeholder="blur"
+            data-lightbox
+            /* Если хочешь сам указать «большую» версию — раскомментируй:
+            data-full={p.imageFull ?? undefined}
+            */
           />
         </div>
 

@@ -1,6 +1,7 @@
 ---
-import "../styles/global.css";          // глобальные стили один раз
+import "../styles/global.css"; // глобальные стили один раз
 import Logo from "../components/Logo.astro";
+import Lightbox from "../components/Lightbox.astro";
 // Если хочешь, перенеси сюда Header/Footer позже
 
 // Пропсы для SEO и темизации
@@ -14,8 +15,12 @@ const {
   bodyClass = "",
 } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang={lang} class="h-full bg-[#16181D] [scrollbar-gutter:stable_both-edges]">
+
+<!doctype html>
+<html
+  lang={lang}
+  class="h-full bg-[#16181D] [scrollbar-gutter:stable_both-edges] scroll-smooth motion-reduce:scroll-auto"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -68,11 +73,14 @@ const {
       <a href="/datenschutz">Datenschutz</a><br />
       &copy; {new Date().getFullYear()} Serhii Sardak. Alle Rechte vorbehalten.
 
-      {/* JSON-LD можно прокидывать со страницы, но базовый вариант оставлю здесь */}
+      {
+        /* JSON-LD можно прокидывать со страницы, но базовый вариант оставлю здесь */
+      }
       <slot name="structured-data" />
     </footer>
 
     {/* Скрипты страницы (если нужны) */}
     <slot name="after" />
+    <Lightbox />
   </body>
 </html>

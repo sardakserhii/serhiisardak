@@ -1,0 +1,85 @@
+<script is:inline>
+  (() => {
+    const dlg = document.createElement("dialog");
+    dlg.className =
+      "inset-0 m-auto p-0 border-0 bg-transparent [&::backdrop]:bg-black/80";
+    dlg.innerHTML = `
+    <div class="lb-panel relative max-w-[min(90vw,1200px)] max-h-[80vh]
+                      transition duration-200 ease-out
+                      opacity-0 scale-95">
+      <button data-close aria-label="Close"
+        class="absolute right-3 top-3 text-2xl leading-none px-2 select-none">×</button>
+      <img alt="" class="block w-auto h-auto max-w-full max-h-[80vh] object-contain" />
+    </div>
+  `;
+    document.body.appendChild(dlg);
+
+    const panel = dlg.querySelector(".lb-panel");
+    const imgEl = dlg.querySelector("img");
+
+    // Открытие с анимацией
+    const openWithAnim = () => {
+      dlg.showModal();
+      // следующий кадр — чтобы transition сработал
+      requestAnimationFrame(() => {
+        panel.classList.remove("opacity-0", "scale-95");
+        panel.classList.add("opacity-100", "scale-100");
+      });
+      document.body.style.overflow = "hidden";
+    };
+
+    // Закрытие с анимацией (обратный переход)
+    const closeWithAnim = () => {
+      panel.classList.remove("opacity-100", "scale-100");
+      panel.classList.add("opacity-0", "scale-95");
+      const onEnd = (e) => {
+        if (e.target !== panel) return;
+        panel.removeEventListener("transitionend", onEnd);
+        dlg.close();
+        document.body.style.overflow = "";
+      };
+      panel.addEventListener("transitionend", onEnd, { once: true });
+    };
+
+    // Клики/esc
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg) closeWithAnim();
+    });
+    dlg.querySelector("[data-close]").addEventListener("click", closeWithAnim);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && dlg.open) closeWithAnim();
+    });
+
+    // Выбор самого большого src (для astro:assets)
+    const pickLargestFromSrcset = (el) => {
+      const ss = el.getAttribute("srcset");
+      if (!ss) return null;
+      const last = ss.split(",").pop().trim();
+      return last.split(/\s+/)[0] || null;
+    };
+
+    // Делегирование по [data-lightbox]
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-lightbox]");
+      if (!el) return;
+      e.preventDefault();
+
+      const src =
+        el.getAttribute("data-full") ||
+        pickLargestFromSrcset(el) ||
+        el.currentSrc ||
+        el.getAttribute("src");
+
+      if (!src) return;
+
+      // Сброс к стартовым классам перед каждым открытием
+      panel.classList.remove("opacity-100", "scale-100");
+      panel.classList.add("opacity-0", "scale-95");
+
+      imgEl.src = src;
+      imgEl.alt = el.getAttribute("alt") || "";
+
+      openWithAnim();
+    });
+  })();
+</script>
