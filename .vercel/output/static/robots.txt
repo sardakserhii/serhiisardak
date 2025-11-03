@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sardak.dev/sitemap-index.xml
