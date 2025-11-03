@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seo = {
+  title: "Impressum – sardak.dev",
+  description:
+    "Impressum (Anbieterkennzeichnung) – Serhii Sardak, freiberuflicher Webentwickler in Schwaigern, Deutschland.",
+  url: "https://sardak.dev/impressum",
+  image: "https://sardak.dev/og/og-cover.jpg",
+  locale: "de_DE",
+};
+
+const lastUpdated = "03.11.2025";
+---
+
+<BaseLayout {...seo}>
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold tracking-tight">Impressum</h1>
+    <p class="mt-1 text-white/70">Angaben gemäß § 5 DDG</p>
+  </header>
+
+  <section aria-labelledby="anbieter" class="space-y-1">
+    <h2 id="anbieter" class="text-xl font-semibold">Anbieter</h2>
+    <p>Serhii Sardak (Freiberufler)</p>
+    <p class="text-white/80">/sardak.dev Web‑development</p>
+    <address class="not-italic">
+      Zabergäustraße 4<br />
+      74193 Schwaigern, Deutschland
+    </address>
+    <p>
+      Telefon: <a
+        class="underline decoration-white/20 hover:decoration-white"
+        href="tel:+4917680655618"
+        aria-label="Telefonnummer anrufen">+49&nbsp;176&nbsp;80655618</a
+      ><br />
+      E‑Mail: <a
+        class="underline decoration-white/20 hover:decoration-white"
+        href="mailto:sardakserhii@gmail.com"
+        aria-label="E-Mail an Serhii Sardak senden">sardakserhii@gmail.com</a
+      >
+    </p>
+  </section>
+
+  <section aria-labelledby="taetigkeit" class="mt-6">
+    <h2 id="taetigkeit" class="text-xl font-semibold">Tätigkeit</h2>
+    <p>Freiberuflicher Webentwickler / Portfolio‑Seite</p>
+  </section>
+
+  <section aria-labelledby="ust" class="mt-6">
+    <h2 id="ust" class="text-xl font-semibold">Umsatzsteuer‑ID</h2>
+    <p>Keine USt‑IdNr. vorhanden.</p>
+  </section>
+
+  <section aria-labelledby="verantwortlich" class="mt-6">
+    <h2 id="verantwortlich" class="text-xl font-semibold">
+      Verantwortlich für den Inhalt i.S.d. § 18 Abs. 2 MStV
+    </h2>
+    <p>Serhii Sardak, Anschrift wie oben.</p>
+  </section>
+
+  <section aria-labelledby="haftung" class="mt-6 space-y-4">
+    <h2 id="haftung" class="text-xl font-semibold">Rechtliche Hinweise</h2>
+    <div>
+      <h3 class="font-semibold">Haftung für Inhalte</h3>
+      <p>
+        Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die
+        Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch
+        keine Gewähr übernehmen.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-semibold">Haftung für Links</h3>
+      <p>
+        Diese Seite kann Links zu externen Websites Dritter enthalten, auf deren
+        Inhalte ich keinen Einfluss habe. Für diese Inhalte wird keine Haftung
+        übernommen; verantwortlich ist der jeweilige Anbieter.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-semibold">Urheberrecht</h3>
+      <p>
+        Die auf dieser Website erstellten Inhalte und Werke unterliegen dem
+        deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und
+        jede Art der Verwertung bedürfen der Zustimmung des jeweiligen Urhebers.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="odr" class="mt-6">
+    <h2 id="odr" class="text-xl font-semibold">
+      Verbraucher&shy;streit&shy;beilegung / ODR
+    </h2>
+    <p>
+      Ich bin weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor
+      einer Verbraucherschlichtungsstelle teilzunehmen.
+    </p>
+  </section>
+
+  <footer
+    class="mt-12 border-t border-white/10 pt-6 text-sm text-white/70 flex items-center justify-between gap-4"
+  >
+    <p>Letzte Aktualisierung: {lastUpdated}</p>
+    <nav aria-label="Rechtliche Seiten">
+      <a
+        href="/datenschutz"
+        class="underline decoration-white/20 hover:decoration-white"
+        aria-label="Datenschutzerklärung öffnen">Datenschutzerklärung</a
+      >
+    </nav>
+  </footer>
+</BaseLayout>
