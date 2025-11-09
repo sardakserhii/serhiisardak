@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Projects from "../components/Projects.astro";
 import Contacts from "../components/Contacts.astro";
+import ProjectsGrid from "../components/ProjectsGrid.astro";
 
 const seo = {
   title: "Serhii Sardak – Web-Developer für schnelle One-Page-Websites",
@@ -15,7 +16,8 @@ const seo = {
 ---
 <BaseLayout {...seo}>
   <Hero />
-  <Projects />
+  <ProjectsGrid />
+  <!-- <Projects /> -->
   <Contacts />
 
   {/* JSON-LD – если нужен именно на главной */}

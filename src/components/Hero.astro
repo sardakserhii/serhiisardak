@@ -3,70 +3,70 @@ import TechList from "./TechList.astro";
 
 // import bg from "assets/bg/linieBgSvgsvg.svg"; // проверь точное имя файла
 const skills = [
-  "Astro",
-  "React",
-  "Vue",
-  "Svelte",
-  "Tailwind CSS",
-  "JavaScript",
-  "TypeScript",
+    "Astro",
+    "React",
+    "Vue",
+    "Svelte",
+    "Tailwind CSS",
+    "JavaScript",
+    "TypeScript",
 ];
 ---
 
 <section
-  class="min-h-screen bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%] opacity-80 md:opacity-90 py-16 md:py-24"
-  id="hero"
+    class="lg:h-[80vh] bg-[#16181D] flex items-center justify-center relative overflow-hidden bg-[url(/src/assets/bg/bg-lines-symmetric.svg)] bg-center bg-no-repeat bg-size-[120%] opacity-80 md:opacity-90"
+    id="hero"
 >
-  <div
-    class="flex flex-col items-center justify-center gap-y-8 min-h-screen max-w-4/7 px-4 mx-auto text-center text-white"
-  >
-    <img
-      src="/img/profileImg.webp"
-      alt="Avatar Logo"
-      class="w-36 h-36 mb-4 rounded-full object-cover border-4 border-white"
-    />
-
-    <h1
-      class="font-bold mb-8 text-gray-200 text-3xl md:text-5xl tracking-tight"
+    <div
+        class="flex flex-col items-center justify-center gap-y-8 max-w-4/7 px-4 mx-auto text-center text-white"
     >
-      Hello World! Mein name ist <span class="text-[#E3646E]"
-        >Serhii Sardak.</span
-      > Ich bin Web-Developer
-    </h1>
+        <img
+            src="/img/profileImg.webp"
+            alt="Avatar Logo"
+            class="w-36 h-36 mb-4 rounded-full object-cover border-4 border-white"
+        />
 
-    <p class="mb-8 text-xl prose prose-invert max-w-none md:max-w-[60ch]">
-      Professionelle Landing Page in einer Woche. Astro, Tailwind und SEO für
-      beste Performance. Texte optional mit ChatGPT verfeinert. Ich erstelle
-      moderne One-Page-Websites für kleine Unternehmen. Klare Struktur,
-      schnelles Laden, responsive Design.
-    </p>
+        <h1
+            class="font-bold mb-8 text-gray-200 text-3xl md:text-5xl tracking-tight"
+        >
+            Hello World! Mein name ist <span class="text-[#E3646E]"
+                >Serhii Sardak.</span
+            > Ich bin Web-Developer
+        </h1>
 
-    <div class="flex items-center justify-center space-x-4 mb-8">
-      <a
-        href="#contact"
-        class="bg-[#E3646E] text-white py-2 px-4 rounded hover:bg-[#D2535E] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3646E]"
-        >Kostenlose Beratung buchen</a
-      >
-      <a
-        href="#projects"
-        aria-label="Zum Portfolio springen – Projekte ansehen"
-        class="text-[#E3646E] border border-[#E3646E]/70 bg-transparent py-2 px-4 rounded hover:bg-[#E3646E]/10 transition focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E3646E]/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#16181D]"
-        >Projekte ansehen</a
-      >
+        <p class="mb-8 text-xl prose prose-invert max-w-none md:max-w-[60ch]">
+            Professionelle Landing Page in einer Woche. Astro, Tailwind und SEO
+            für beste Performance. Texte optional mit ChatGPT verfeinert. Ich
+            erstelle moderne One-Page-Websites für kleine Unternehmen. Klare
+            Struktur, schnelles Laden, responsive Design.
+        </p>
+
+        <div class="flex items-center justify-center space-x-4 mb-8">
+            <a
+                href="#contact"
+                class="bg-[#E3646E] text-white py-2 px-4 rounded hover:bg-[#D2535E] transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3646E]"
+                >Kostenlose Beratung buchen</a
+            >
+            <a
+                href="#projects"
+                aria-label="Zum Portfolio springen – Projekte ansehen"
+                class="text-[#E3646E] border border-[#E3646E]/70 bg-transparent py-2 px-4 rounded hover:bg-[#E3646E]/10 transition focus:outline-none focus-visible:ring-1 focus-visible:ring-[#E3646E]/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#16181D]"
+                >Projekte ansehen</a
+            >
+        </div>
+
+        <div class="flex justify-center space-x-4 flex-wrap gap-5">
+            <TechList
+                items={[
+                    "github",
+                    "css",
+                    "html",
+                    "javascript",
+                    "astro",
+                    "tailwind",
+                    "vercel",
+                ]}
+            />
+        </div>
     </div>
-
-    <div class="flex justify-center space-x-4 flex-wrap gap-5">
-      <TechList
-        items={[
-          "github",
-          "css",
-          "html",
-          "javascript",
-          "astro",
-          "tailwind",
-          "vercel",
-        ]}
-      />
-    </div>
-  </div>
 </section>

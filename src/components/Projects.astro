@@ -1,8 +1,32 @@
 ---
-// src/components/projects.astro (фрагмент)
+/* src/components/projects.astro (обновлённый фрагмент) */
 import { Image } from "astro:assets";
 import TechList from "./TechList.astro";
-import projects from "../lib/project.js";
+import legacyProjects from "../lib/project.js"; // твои старые карточки
+import { PROJECTS as liveProjects } from "../data/projects"; // новые live-демо
+
+// Приводим live-демо к «карточному» виду, совместимому с legacy
+type Card = {
+  title: string;
+  description?: string;
+  tech?: string[];
+  image?: any;          // для astro:assets (legacy)
+  slug?: string;        // для превью /previews/<slug>.webp
+  url?: string;         // demo
+  repo?: string;        // code
+};
+
+// Преобразуем live → Card. Описания, если нужно, можно подтянуть из legacy позже.
+const liveCards: Card[] = liveProjects.map(p => ({
+  title: p.title,
+  tech: p.tags ?? [],
+  slug: p.slug,
+  url: p.url,
+  repo: p.repo,
+}));
+
+// Единый массив: сначала live-демо, затем legacy (или наоборот — по желанию)
+const cards: Card[] = [...liveCards, ...legacyProjects];
 ---
 
 <section id="projects" class="bg-[#16181D] mx-auto max-w-[1100px] px-4 py-16 md:py-24 scroll-mt-[var(--header-h)]">
@@ -12,37 +36,72 @@ import projects from "../lib/project.js";
   </header>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {projects.map((p) => (
+    {cards.map((p) => (
       <article class="grid gap-6 md:grid-cols-[250px_1fr] items-start rounded-2xl bg-[#292C34] p-6 shadow-lg border border-white/5 min-h-[220px] hover:-translate-y-0.5 transition overflow-hidden">
         <!-- превью -->
         <div class="w-full md:w-[250px] aspect-[4/3] h-[200px] rounded-xl overflow-hidden">
-          <Image
-            src={p.image}
-            alt={p.title}
-            widths={[320, 480, 640, 768, 896, 1024]}
-            formats={["avif", "webp"]}
-            quality={70}
-            sizes="(min-width: 768px) 250px, 92vw"
-            class="w-full h-full object-cover cursor-zoom-in"
-            loading="lazy"
-            decoding="async"
-            placeholder="blur"
-            data-lightbox
-            /* Если хочешь сам указать «большую» версию — раскомментируй:
-            data-full={p.imageFull ?? undefined}
-            */
-          />
+          {
+            // Если есть статический asset (legacy) — используем astro:assets
+            p.image ? (
+              <Image
+                src={p.image}
+                alt={p.title}
+                widths={[320, 480, 640, 768, 896, 1024]}
+                formats={["avif", "webp"]}
+                quality={70}
+                sizes="(min-width: 768px) 250px, 92vw"
+                class="w-full h-full object-cover cursor-zoom-in"
+                loading="lazy"
+                decoding="async"
+                placeholder="blur"
+                data-lightbox
+              />
+            ) : (
+              // Иначе — рендерим снимок из /public/previews/<slug>.webp
+              <img
+                src={p.slug ? `/previews/${p.slug}.webp` : "/previews/fallback.webp"}
+                alt={`${p.title} preview`}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            )
+          }
         </div>
 
         <!-- контент -->
         <div class="flex flex-col h-full min-w-0 w-full">
           <h3 class="font-semibold text-[16px] mb-1 break-words whitespace-normal">{p.title}</h3>
-          <p class="text-sm text-white/70 mb-4 break-words whitespace-normal">
-            {p.description.split(".").slice(0, 2).join(". ")}
-          </p>
+          {p.description && (
+            <p class="text-sm text-white/70 mb-4 break-words whitespace-normal">
+              {p.description.split(".").slice(0, 2).join(". ")}
+            </p>
+          )}
+
           <div class="mt-auto flex flex-wrap gap-2">
-            <TechList items={p.tech} />
+            <TechList items={p.tech ?? []} />
           </div>
+
+          {(p.url || p.repo) && (
+            <div class="mt-4 flex gap-2">
+              {p.url && (
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center rounded-lg border border-white/15 px-3 py-1.5 text-sm text-white/90 hover:bg-white/10"
+                >Demo</a>
+              )}
+              {p.repo && (
+                <a
+                  href={p.repo}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center rounded-lg border border-white/15 px-3 py-1.5 text-sm text-white/90 hover:bg-white/10"
+                >Code</a>
+              )}
+            </div>
+          )}
         </div>
       </article>
     ))}

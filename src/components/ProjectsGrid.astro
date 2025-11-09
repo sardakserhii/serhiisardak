@@ -1,0 +1,15 @@
+---
+import { PROJECTS } from "../data/projects";
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<section class="mx-auto w-full max-w-6xl px-4 py-6" id="projects">
+    <header class="mb-6 py-4 border-b border-white/10 text-center">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Projects</h2>
+        <p class="text-white/70">Live Demo</p>
+    </header>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {PROJECTS.map((p) => <ProjectCard project={p} />)}
+    </div>
+</section>
