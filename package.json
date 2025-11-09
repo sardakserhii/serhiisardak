@@ -1,26 +1,30 @@
 {
-  "name": "serhii-sardak-website",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^8.0.4",
-    "@tailwindcss/vite": "^4.1.16",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.15.3",
-    "resend": "^6.4.0",
-    "tailwindcss": "^4.1.16"
-  },
-  "devDependencies": {
-    "@iconify-json/lucide": "^1.2.71",
-    "@iconify-json/simple-icons": "^1.2.56",
-    "astro-icon": "^1.1.5"
-  }
+    "name": "serhii-sardak-website",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "shots": "tsx scripts/snapshots.ts"
+    },
+    "dependencies": {
+        "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/vercel": "^8.0.4",
+        "@tailwindcss/vite": "^4.1.16",
+        "@vercel/analytics": "^1.5.0",
+        "@vercel/speed-insights": "^1.2.0",
+        "astro": "^5.15.3",
+        "resend": "^6.4.0",
+        "tailwindcss": "^4.1.16"
+    },
+    "devDependencies": {
+        "@iconify-json/lucide": "^1.2.71",
+        "@iconify-json/simple-icons": "^1.2.56",
+        "@playwright/test": "^1.56.1",
+        "astro-icon": "^1.1.5",
+        "sharp": "^0.34.5",
+        "tsx": "^4.19.0"
+    }
 }
