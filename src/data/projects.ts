@@ -79,4 +79,11 @@ export const PROJECTS: Project[] = [
         repo: "https://github.com/sardakserhii/website_shop/tree/main/cafe_01",
         tags: ["Astro", "Tailwind", "Food"],
     },
+    {
+        slug: "leder-01",
+        title: "Leder 01 — Design Studio",
+        url: "https://leder-01.vercel.app/",
+        repo: "https://github.com/sardakserhii/website_shop/",
+        tags: ["Astro", "Tailwind", "Leder"],
+    },
 ];
