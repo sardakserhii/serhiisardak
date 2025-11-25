@@ -3,7 +3,10 @@ import { chromium } from "@playwright/test";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
-import { PROJECTS } from "../src/data/projects";
+import { PROJECTS, WEB_APPS } from "../src/data/projects";
+
+// Объединяем все проекты
+const ALL_PROJECTS = [...PROJECTS, ...WEB_APPS];
 
 // === Настройки превью ===
 const VIEWPORT_W = 1440; // ширина вьюпорта
@@ -25,7 +28,7 @@ async function shot() {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome Safari",
     });
 
-    for (const p of PROJECTS) {
+    for (const p of ALL_PROJECTS) {
         const page = await context.newPage();
         try {
             console.log("→", p.slug, p.url);

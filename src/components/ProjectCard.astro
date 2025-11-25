@@ -35,6 +35,13 @@ const img = `/previews/${project.slug}.webp`;
                 >
                     {project.title}
                 </a>
+                {
+                    project.description ? (
+                        <p class="mt-1 text-sm text-white/70">
+                            {project.description}
+                        </p>
+                    ) : null
+                }
             </h3>
             {
                 project.tags && (

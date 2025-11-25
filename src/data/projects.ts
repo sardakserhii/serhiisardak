@@ -6,6 +6,7 @@ export type Project = {
     url: string; // прод-URL (Vercel/домен)
     repo?: string; // опционально: ссылка на исходники
     tags?: string[]; // стек/ниша
+    description?: string; // описание проекта (для веб-приложений)
 };
 
 export const PROJECTS: Project[] = [
@@ -85,5 +86,25 @@ export const PROJECTS: Project[] = [
         url: "https://leder-01.vercel.app/",
         repo: "https://github.com/sardakserhii/website_shop/",
         tags: ["Astro", "Tailwind", "Leder"],
+    },
+];
+
+// Веб-приложения
+export const WEB_APPS: Project[] = [
+    {
+        slug: "routeguide",
+        title: "RouteGuide — Routenplaner für Reisen",
+        url: "https://routeguide.vercel.app/",
+        description:
+            "RouteGuide ist ein Routenplaner, der hilft, optimale Strecken für Reisen oder tägliche Fahrten zu finden. Er zeigt schnell die beste Route und spart Zeit bei der Planung.",
+        tags: [
+            "React",
+            "TypeScript",
+            "PostgreSQL",
+            "Maps API",
+            "KI",
+            "Routenplanung",
+        ],
+        repo: "https://github.com/sardakserhii/routeguide",
     },
 ];
