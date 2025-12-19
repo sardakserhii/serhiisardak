@@ -355,6 +355,20 @@ export const TECH = {
     classes: "bg-blue-500/15 text-blue-300 ring-blue-400/30",
   },
 
+  // === OS / Ops / Scripting
+  linux: {
+    label: "Linux",
+    classes: "bg-amber-500/15 text-amber-300 ring-amber-400/30",
+  },
+  bash: {
+    label: "Bash",
+    classes: "bg-zinc-500/15 text-zinc-300 ring-zinc-400/30",
+  },
+  windows: {
+    label: "Windows",
+    classes: "bg-blue-500/15 text-blue-300 ring-blue-400/30",
+  },
+
   // === Медиа/прочие полезняшки
   websocketss: {
     label: "Sockets",
