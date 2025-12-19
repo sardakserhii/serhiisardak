@@ -1,0 +1,86 @@
+cv:
+    name: "Sardak Serhii"
+    location: "Zabergäustr. 4, 74193 Schwaigern"
+    email: "sardakserhii@gmail.com"
+    phone: "+49 176 80655618"
+    sections:
+        berufserfahrung:
+            - company: "ZQM GmbH"
+              position: "Helfer"
+              start_date: "2023-08"
+              end_date: "present"
+              highlights:
+                  - "Kranführer"
+                  - "Verzinkung und Endmontage"
+            - company: "Econom Plus (Ukraine)"
+              position: "Leiter der Einkaufsabteilung"
+              start_date: "2021-08"
+              end_date: "2022-05"
+              highlights:
+                  - "Steuerung von 115 Filialen und 2 Distributionszentren (ABM-Inventory)"
+                  - "Einführung neuer Prozesse und Optimierung der Lieferkette"
+                  - "Eröffnung neuer Einzelhandelsgeschäfte (beteiligt an ca. 50 neuen Lebensmittelgeschäften)"
+                  - "Erstellung automatisierter Reports (Excel, PowerPivot)"
+                  - "Verantwortung für die Steuerung von über 100 Filialen und zwei Lagern"
+            - company: "Econom Plus (Ukraine)"
+              position: "Datenerfasser"
+              start_date: "2019-07"
+              end_date: "2021-08"
+              highlights:
+                  - "Bedarfsplanung und Verkaufsprognosen"
+                  - "Bestellabwicklung für neue Produkte und Aktionen"
+
+        bildung_und_weiterbildung:
+            - institution: "Go Language, Heilbronn"
+              area: "Integrationskurs Niveau B1; Go Language"
+              start_date: "2023-03"
+              end_date: "2023-08"
+            - institution: "Weiterbildung, PowerCode Academy (Ukraine)"
+              area: "Front-End Entwicklung"
+              start_date: "2019-11"
+              end_date: "2020-03"
+            - institution: "Classic Private University (Ukraine)"
+              area: "Master of Software Engineering, Software Engineer"
+              start_date: "2016-09"
+              end_date: "2018-02"
+            - institution: "Weiterbildung, BrainAcademy (Ukraine)"
+              area: "Java SE Entwicklung"
+              start_date: "2015-11"
+              end_date: "2016-03"
+            - institution: "Classic Private University (Ukraine)"
+              area: "Bechelor of Software Engineering, Software Development and Testing Specialist"
+              start_date: "2011-09"
+              end_date: "2016-06"
+
+        edv_kenntnisse:
+            - label: "Datenanalyse & Reporting"
+              details: "Microsoft Excel (fortgeschritten), PowerPivot, Power Query, automatisierte Reports"
+            - label: "Programmierung & Scripting"
+              details: "JavaScript (Grundlagen), Python (Grundlagen), Java (Grundlagen), Bash, Git"
+            - label: "Betriebssysteme & Tools"
+              details: "Linux (Grundkenntnisse), Windows "
+
+        sprachen:
+            - label: "Deutsch"
+              details: "B1 (Zertifikat)"
+            - label: "Englisch"
+              details: "A2"
+            - label: "Ukrainisch"
+              details: "Muttersprache"
+            - label: "Russisch"
+              details: "fließend"
+
+        fuehrerschein:
+            - "Klasse B (Auto vorhanden)"
+
+    # Optional, but recommended to avoid ambiguity:
+    # headline: "..."  # e.g., "Junior Software Engineer" / "IT Support" etc.
+    social_networks:
+        - network: "GitHub"
+          username: "sardakserhii"
+
+design:
+    theme: "classic"
+
+locale:
+    language: "german"

@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import Projects from "../components/Projects.astro";
 import Contacts from "../components/Contacts.astro";
 import ProjectsGrid from "../components/ProjectsGrid.astro";
+import CV from "../components/CV.astro";
 
 const seo = {
-  title: "Serhii Sardak – Web-Developer für schnelle One-Page-Websites",
+  title: "Serhii Sardak – Software Engineer & Portfolio",
   description:
-    "Moderne One-Page-Websites mit Astro & Tailwind. Klarer Aufbau, schnelle Ladezeiten, SEO-ready. In 7 Tagen live – inkl. Domain & SSL.",
+    "Software Engineer Portfolio von Serhii Sardak. Full Stack Entwicklung mit modernen Technologien. Projekte, Erfahrung und Lebenslauf.",
   url: "https://sardak.dev",
   image: "https://sardak.dev/og/og-cover.jpg",
   locale: "de_DE",
@@ -17,6 +17,7 @@ const seo = {
 <BaseLayout {...seo}>
   <Hero />
   <ProjectsGrid />
+  <CV />
   <!-- <Projects /> -->
   <Contacts />
 

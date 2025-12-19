@@ -16,8 +16,10 @@ const lucide = (
   await import("@iconify-json/lucide/icons.json", { assert: { type: "json" } })
 ).default;
 
-export default defineConfig({
-  output: "static", // или 'hybrid' 'server' then нужно раскомментировать adapter
+import yaml from '@rollup/plugin-yaml';
+
+export default defineConfig({ // Line 19 in original
+  output: "static", // or 'hybrid' 'server'
   // adapter: vercel(),
   site: "https://sardak.dev",
   integrations: [
@@ -30,7 +32,7 @@ export default defineConfig({
     sitemap(),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), yaml()],
     resolve: {
       alias: {
         "@components": fileURLToPath(
